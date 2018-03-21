@@ -1,0 +1,132 @@
+1
+00:00:00,210 --> 00:00:08,330
+So now we're going to learn how to assign a value to a variable in a template and that looks like this.
+
+2
+00:00:08,340 --> 00:00:15,090
+All right so here's my template and here is the value which I've passed into my template I'm taking
+
+3
+00:00:15,090 --> 00:00:18,150
+that value and using the short declaration.
+
+4
+00:00:18,150 --> 00:00:25,230
+Operator I'm assigning it to a variable in my template and so those of you who are coming from PH are
+
+5
+00:00:25,230 --> 00:00:29,580
+going to feel happy that you use dollar signs to access our variables again.
+
+6
+00:00:29,670 --> 00:00:29,950
+Right.
+
+7
+00:00:29,970 --> 00:00:37,920
+But I assign that value to a variable and now I can access that variable anywhere on my template and
+
+8
+00:00:37,920 --> 00:00:40,410
+display its value right.
+
+9
+00:00:40,410 --> 00:00:42,370
+So that comes in handy sometimes.
+
+10
+00:00:42,420 --> 00:00:47,390
+It's good to know about I just wanted to point it out and show you this is how you do it.
+
+11
+00:00:47,550 --> 00:00:53,820
+And this is the exact same file that we saw in the previous video in the previous example except I've
+
+12
+00:00:53,820 --> 00:00:56,010
+changed the data that's being passed down.
+
+13
+00:00:56,070 --> 00:01:04,220
+I'm passing in a string here instead of an int and and I Severgnini is parse Glubb throughout the course.
+
+14
+00:01:04,230 --> 00:01:06,720
+And you notice I'm using parse files.
+
+15
+00:01:07,020 --> 00:01:13,740
+But hopefully after looking at that two videos back about parsing and executing templates parsing and
+
+16
+00:01:13,740 --> 00:01:20,220
+executing files hopefully you see from the standard library how that all works because template parse
+
+17
+00:01:20,220 --> 00:01:28,260
+files or template parse glob both give me back a value a pointer to a template a value of type pointer
+
+18
+00:01:28,260 --> 00:01:31,340
+to a template and an heir by using must.
+
+19
+00:01:31,330 --> 00:01:36,510
+So I don't have to check that Arutz checking it for me that I get my TBO and execute template and I
+
+20
+00:01:36,510 --> 00:01:38,130
+specify the template I'm executing.
+
+21
+00:01:38,130 --> 00:01:42,970
+So I'm just using parse files because we're only parsing one file and I don't have a folder.
+
+22
+00:01:42,990 --> 00:01:49,710
+So anyhow that's when I'm passing And so when I run this because the proof is in the pudding.
+
+23
+00:01:50,040 --> 00:01:58,890
+You talk about cooking all day long but unless you cook something that I cannot talk and type apparently
+
+24
+00:01:58,890 --> 00:02:00,240
+at the same time.
+
+25
+00:02:00,790 --> 00:02:02,270
+Yeah right.
+
+26
+00:02:02,340 --> 00:02:05,620
+So I'll talk unless you're actually cooking stuff that tastes good.
+
+27
+00:02:07,440 --> 00:02:08,550
+Cool.
+
+28
+00:02:08,550 --> 00:02:09,180
+There you go.
+
+29
+00:02:09,180 --> 00:02:16,740
+So I passed on the meaning of life release self-focus embrace other focus.
+
+30
+00:02:17,430 --> 00:02:19,400
+So that's it.
+
+31
+00:02:19,410 --> 00:02:20,870
+I passed in the data.
+
+32
+00:02:20,910 --> 00:02:21,500
+Right.
+
+33
+00:02:21,520 --> 00:02:26,410
+And I took that value and I signed it to a variable and I printed that variable out.
+

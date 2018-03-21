@@ -1,0 +1,924 @@
+1
+00:00:00,480 --> 00:00:06,150
+So now we're going to start learning about the package text template from the standard library.
+
+2
+00:00:06,510 --> 00:00:12,150
+And we're going to begin our exploration and the next step in our learning about templates by reflecting
+
+3
+00:00:12,150 --> 00:00:17,960
+back upon the code in that previous example in 0 0 3 and there is a lot of issues with these.
+
+4
+00:00:17,980 --> 00:00:19,380
+This code right.
+
+5
+00:00:19,380 --> 00:00:25,550
+Like one of the issues is that it's all and package main and it's all in fun kumain.
+
+6
+00:00:25,620 --> 00:00:30,120
+So we'd want to do something to abstract that code to make it more reusable.
+
+7
+00:00:30,360 --> 00:00:35,490
+And one of the ways that we could do that is we could take all of this text right ear and we could put
+
+8
+00:00:35,490 --> 00:00:38,300
+it somewhere else we could get it out of Maine.
+
+9
+00:00:38,550 --> 00:00:45,540
+And so the best way to do this would be to have all for each html files as files and then to somehow
+
+10
+00:00:45,540 --> 00:00:49,090
+be able to bring them into our program and use them.
+
+11
+00:00:49,110 --> 00:00:53,400
+And so that's exactly what we're going to do in this next example and we're going to start learning
+
+12
+00:00:53,430 --> 00:01:00,000
+about the functions in the text template package from the standard library we're going start learning
+
+13
+00:01:00,000 --> 00:01:06,190
+about the functions in text template to be able to bring files into our program and use them.
+
+14
+00:01:06,300 --> 00:01:08,990
+And that's called parsing parsing a file.
+
+15
+00:01:09,060 --> 00:01:13,980
+So we'll have a bunch of files and we'll be able to parse them and then bring them into our program
+
+16
+00:01:14,130 --> 00:01:14,970
+and use them.
+
+17
+00:01:15,270 --> 00:01:17,430
+And we're going to start out with just one file.
+
+18
+00:01:17,430 --> 00:01:22,680
+So here I have a file TPL Diago each DML and that's where all that text is.
+
+19
+00:01:22,710 --> 00:01:27,150
+I'm not going to merge data with it yet because we're just going to learn this one step at a time.
+
+20
+00:01:27,390 --> 00:01:34,050
+But here is the first step is to be able to you know abstract our code be able to bring the text of
+
+21
+00:01:34,050 --> 00:01:40,560
+the files that we want out into separate files and then bring those into our program and use them by
+
+22
+00:01:40,560 --> 00:01:41,830
+parsing them.
+
+23
+00:01:41,850 --> 00:01:46,050
+And so that's the first step is to abstract it get that text into its own file and bring him into our
+
+24
+00:01:46,050 --> 00:01:47,100
+program and use him.
+
+25
+00:01:47,100 --> 00:01:50,670
+We're not going to merge data and yet we will do that very soon.
+
+26
+00:01:50,670 --> 00:01:51,160
+All right.
+
+27
+00:01:51,360 --> 00:01:57,030
+So here I have TPL Diago HD M-L and you can see the extension that go each DMO.
+
+28
+00:01:57,240 --> 00:02:06,060
+So that's the customary extension used with Go programming but this is not like ph P or Espey or cold
+
+29
+00:02:06,060 --> 00:02:06,630
+fusion.
+
+30
+00:02:06,630 --> 00:02:10,520
+See if them if you go back far enough right.
+
+31
+00:02:10,530 --> 00:02:16,800
+It's not like you have to have that file extension because these are just files and we're going to tell
+
+32
+00:02:16,800 --> 00:02:22,260
+our program to Hey go get those files and bring them in so we can name these files anything we want.
+
+33
+00:02:22,260 --> 00:02:22,470
+Right.
+
+34
+00:02:22,470 --> 00:02:23,610
+I could call this
+
+35
+00:02:29,570 --> 00:02:37,830
+the great north west as an extension and call it GMR for grandma or I could call it HP if I wanted or
+
+36
+00:02:37,830 --> 00:02:45,540
+I could call it ph be SPCS them whatever extension I wanted to call it I could call it but the customary
+
+37
+00:02:45,750 --> 00:02:50,160
+traditional extension for Go programming is go each humoral.
+
+38
+00:02:50,370 --> 00:02:56,640
+And when we serve our files we'll be serving them right from a restful when we serve them in a restful
+
+39
+00:02:56,640 --> 00:02:57,340
+way.
+
+40
+00:02:57,360 --> 00:03:03,480
+And so the file extension is not going to matter and it's just code within our program that our program
+
+41
+00:03:03,480 --> 00:03:04,430
+uses.
+
+42
+00:03:04,440 --> 00:03:04,970
+All right.
+
+43
+00:03:05,250 --> 00:03:10,350
+So that's the file extension that's traditionally used go each Jamail and you could use whatever you
+
+44
+00:03:10,350 --> 00:03:12,580
+like but that's the customary one to use.
+
+45
+00:03:12,780 --> 00:03:18,930
+So what we'll do is we will parse this file and then we'll be able to use that file and we can execute
+
+46
+00:03:18,930 --> 00:03:21,380
+it and we can execute it to some location right.
+
+47
+00:03:21,390 --> 00:03:27,050
+This takes writer interface takes typewriter says all we do.
+
+48
+00:03:27,060 --> 00:03:34,050
+So to understand how we parse files and bring them into our program it's good for us to go look at the
+
+49
+00:03:34,830 --> 00:03:40,410
+text template package from the standard library and I want to go down to the index and I want to explore
+
+50
+00:03:40,410 --> 00:03:41,710
+that.
+
+51
+00:03:41,760 --> 00:03:49,350
+So we go to the index we can see here at the index for text template we have a type template and type
+
+52
+00:03:49,350 --> 00:03:52,980
+template has it CAN'T ZOOM IN ON THIS.
+
+53
+00:03:53,010 --> 00:03:54,000
+That's disappointing to me.
+
+54
+00:03:54,000 --> 00:04:00,850
+I wish I could zoom in type template has parse files and parse glob and then also new and must and I'll
+
+55
+00:04:00,900 --> 00:04:02,920
+explain what these these do here.
+
+56
+00:04:03,090 --> 00:04:06,910
+And then we when we parse files we get a pointer to a template.
+
+57
+00:04:07,170 --> 00:04:09,700
+If we parse a glob we get a pointer to a template.
+
+58
+00:04:09,780 --> 00:04:14,220
+If we use new we get a pointer to template we use must we get a pointer to a template.
+
+59
+00:04:14,490 --> 00:04:20,610
+So if we use any of these functions we get a pointer to a template and this is type template and if
+
+60
+00:04:20,610 --> 00:04:24,980
+we have a pointer to a template we have all of these methods available to us.
+
+61
+00:04:25,020 --> 00:04:25,290
+Right.
+
+62
+00:04:25,290 --> 00:04:31,230
+All these different methods are attached to any value which is of type A pointer to a template.
+
+63
+00:04:31,560 --> 00:04:38,760
+So some of those methods are a parse parse files and parse Glubb interesting writes parse files and
+
+64
+00:04:38,760 --> 00:04:43,050
+parse glob down here and parse files and parse glob of here.
+
+65
+00:04:43,050 --> 00:04:49,800
+So the way I want you to think of a pointer to a template it's a container into which all of your templates
+
+66
+00:04:49,980 --> 00:04:52,390
+get parsed and are held.
+
+67
+00:04:52,470 --> 00:04:55,800
+So pointer to a template is a container.
+
+68
+00:04:55,800 --> 00:05:03,210
+This is just Todd's definition of it is a container into which all of the templates get parsed and are
+
+69
+00:05:03,210 --> 00:05:04,080
+held.
+
+70
+00:05:04,080 --> 00:05:06,420
+So let me show you how this works and then I'll come back to that.
+
+71
+00:05:06,430 --> 00:05:10,240
+The standard library to make sure we understand the functionality.
+
+72
+00:05:10,320 --> 00:05:18,650
+So when we read our code we're reading this Daut notation is package and then function or type right.
+
+73
+00:05:18,660 --> 00:05:21,690
+Is the next thing so from package template.
+
+74
+00:05:21,870 --> 00:05:26,030
+We're going to use parse files and this is from text template.
+
+75
+00:05:26,250 --> 00:05:28,660
+Be careful when you use your autocomplete.
+
+76
+00:05:28,680 --> 00:05:33,420
+If it says each tim template you're using a different package and that's going to give you a different
+
+77
+00:05:33,420 --> 00:05:33,850
+result.
+
+78
+00:05:33,870 --> 00:05:38,880
+So if your code is looking different it might be because you have text him H.M. Templeton's that text
+
+79
+00:05:38,880 --> 00:05:39,600
+template.
+
+80
+00:05:39,810 --> 00:05:44,730
+We're just going to start out with a text template at first and then we will move up Tahj female template
+
+81
+00:05:44,760 --> 00:05:47,450
+after we understand how text template is working.
+
+82
+00:05:47,700 --> 00:05:54,120
+So from package template I parse files I give it the file name right and if I look at what parse files
+
+83
+00:05:54,120 --> 00:06:02,290
+does parse files to is a very adek parameter where it takes zero or more strings.
+
+84
+00:06:02,310 --> 00:06:02,600
+Right.
+
+85
+00:06:02,610 --> 00:06:09,630
+So if I wanted to I could pass in as many filenames here as I wanted so I could do you know to be able
+
+86
+00:06:09,630 --> 00:06:14,630
+to decode each D-Mo. if I had it so I could just keep asking filenames in there.
+
+87
+00:06:14,880 --> 00:06:20,280
+And so it's going to parse those and then it's going to store them parse files gives me back a pointer
+
+88
+00:06:20,280 --> 00:06:22,340
+to a template and in there.
+
+89
+00:06:22,440 --> 00:06:27,660
+So I checked my air and I have my pointer to a template and remember the way I want you to think about
+
+90
+00:06:27,660 --> 00:06:34,400
+a pointer to a template is a container which is holding all of the templates which I've parsed.
+
+91
+00:06:34,400 --> 00:06:34,890
+OK.
+
+92
+00:06:34,920 --> 00:06:42,990
+Container holding all the templates which I parse Zagat say template execute and execute once execute.
+
+93
+00:06:42,990 --> 00:06:45,210
+It takes a writer and data.
+
+94
+00:06:45,430 --> 00:06:46,160
+OK.
+
+95
+00:06:46,530 --> 00:06:54,840
+And so I'm executing the standard out which implements the writer interface and I am passing in no data.
+
+96
+00:06:54,840 --> 00:06:55,360
+All right.
+
+97
+00:06:55,530 --> 00:06:57,990
+So this is going to execute to standard out.
+
+98
+00:06:58,030 --> 00:07:01,400
+Let's just watch Iran because that will help you see what's happening.
+
+99
+00:07:01,490 --> 00:07:02,190
+Change.
+
+100
+00:07:02,240 --> 00:07:07,500
+Change is for one I.
+
+101
+00:07:09,510 --> 00:07:12,070
+So there it parse that template.
+
+102
+00:07:12,480 --> 00:07:12,870
+Right.
+
+103
+00:07:12,930 --> 00:07:15,410
+And then I executed my template to standard.
+
+104
+00:07:15,510 --> 00:07:18,120
+And I was able to see that pretty cool.
+
+105
+00:07:18,300 --> 00:07:24,810
+Additionally if I wanted to we're just parsing one file here I could also write parse my files get my
+
+106
+00:07:25,260 --> 00:07:29,820
+pointer to a template which is a container holding all the files I parsed in this case have only parsed
+
+107
+00:07:29,820 --> 00:07:36,090
+one and I could create a new file and then I could execute my template and I could pass the new file
+
+108
+00:07:36,090 --> 00:07:38,030
+in there it's a new file template.
+
+109
+00:07:38,040 --> 00:07:43,680
+Execute X-C employee request template execute requests a writer right.
+
+110
+00:07:43,680 --> 00:07:47,610
+And it also takes doubt and we're not passing in any data some doing nil.
+
+111
+00:07:47,820 --> 00:07:55,390
+But since a file implements the rider interface I can now pass a new file in there and template execute
+
+112
+00:07:55,430 --> 00:07:59,200
+will write the results to this new file indexed Cudicini.
+
+113
+00:07:59,600 --> 00:08:08,020
+And so can go into that directory and go and it ran.
+
+114
+00:08:08,040 --> 00:08:14,310
+And then I'll see index studies you know all right there and it put it all in indexed on each mail.
+
+115
+00:08:14,610 --> 00:08:19,650
+So the two steps here are part of your files and then execute your files.
+
+116
+00:08:19,680 --> 00:08:25,890
+And if we look at the standard library we can see that once we parse files we get a pointer to a template
+
+117
+00:08:25,950 --> 00:08:29,530
+and when we have a pointer to a template we have execute.
+
+118
+00:08:29,810 --> 00:08:30,540
+OK.
+
+119
+00:08:31,050 --> 00:08:33,540
+So that method execute is right there.
+
+120
+00:08:33,570 --> 00:08:40,440
+Taschen 10 template we get a value of type pointer to a template that now has the method execute attached
+
+121
+00:08:40,440 --> 00:08:44,190
+to it which we can do execute takes a writer and data.
+
+122
+00:08:44,460 --> 00:08:53,190
+And here we're doing a new file to write to so that's that's using parse files.
+
+123
+00:08:53,190 --> 00:08:59,250
+And here we're doing parse files template parts files and we're just parsing one file but then down
+
+124
+00:08:59,250 --> 00:09:02,040
+here we do TPL parse files.
+
+125
+00:09:02,040 --> 00:09:07,360
+So when I get a value of type template pointer to a template.
+
+126
+00:09:07,500 --> 00:09:11,640
+Right that's a container which holds all of the templates I've parsed.
+
+127
+00:09:11,640 --> 00:09:12,340
+OK.
+
+128
+00:09:12,660 --> 00:09:19,190
+And all if I one of them if I then later decide where I want to add some more templates into that container.
+
+129
+00:09:19,410 --> 00:09:20,680
+Well here's my container.
+
+130
+00:09:20,690 --> 00:09:22,550
+It's a type pointer to a template.
+
+131
+00:09:22,830 --> 00:09:27,570
+And if I go look at the standard library type pointer to template as all these methods.
+
+132
+00:09:27,570 --> 00:09:29,500
+One of the methods is parse files.
+
+133
+00:09:29,670 --> 00:09:30,000
+Right.
+
+134
+00:09:30,000 --> 00:09:36,930
+So now that I have a value which is my TVL of type pointer to a template I have a method attached to
+
+135
+00:09:36,930 --> 00:09:37,060
+it.
+
+136
+00:09:37,060 --> 00:09:43,500
+Parse files which allows me to add more files into my value of type pointer to a template which I've
+
+137
+00:09:43,500 --> 00:09:51,300
+told you to think about as a container holding your templates and so here I parse one file and then
+
+138
+00:09:51,300 --> 00:09:53,420
+I execute that one file to standard out.
+
+139
+00:09:53,460 --> 00:10:00,160
+And then I parse two more files into my value of type pointer to template my container which holds all
+
+140
+00:10:00,160 --> 00:10:06,490
+of my templates and now instead of just execute I'm going to specify execute template.
+
+141
+00:10:06,780 --> 00:10:14,610
+So down here in this library right we have both execute which takes a writer and data or we have execute
+
+142
+00:10:14,610 --> 00:10:22,500
+template which takes a writer name and data and so execute template allows me to execute a specific
+
+143
+00:10:22,500 --> 00:10:23,240
+template.
+
+144
+00:10:23,460 --> 00:10:29,600
+So if my container which holds all of my templates this TPL variable right if it has more than if it
+
+145
+00:10:29,610 --> 00:10:32,540
+only has one template I could just say template execute.
+
+146
+00:10:32,850 --> 00:10:37,080
+But if it has more than one template I want to specify which template.
+
+147
+00:10:37,080 --> 00:10:43,830
+So I use execute template and I say to standard out execute this template execute this template execute
+
+148
+00:10:43,830 --> 00:10:44,790
+that template.
+
+149
+00:10:45,060 --> 00:10:47,620
+And so if I run that and I'm in a three
+
+150
+00:10:52,750 --> 00:10:56,420
+right I get one back to 1 1.
+
+151
+00:10:56,600 --> 00:11:05,720
+So one Mesbah to one and then down here I ran execute again and execute just executes whatever's the
+
+152
+00:11:05,720 --> 00:11:07,850
+first one it finds in the container.
+
+153
+00:11:07,850 --> 00:11:12,540
+So I found one first maybe because that's the first one I put in.
+
+154
+00:11:12,560 --> 00:11:18,050
+So generally speaking and what we're going to use in this course is we're always going to use execute
+
+155
+00:11:18,050 --> 00:11:23,480
+template just so that we can be specific about which template we are executing.
+
+156
+00:11:23,480 --> 00:11:29,180
+And instead of using parse files which you have to list all of your files that you want to parse then
+
+157
+00:11:29,660 --> 00:11:40,280
+we are going to use parse glob because in the standard library we have we could parse files and we can
+
+158
+00:11:40,280 --> 00:11:42,800
+give all the file names or we could parse glob.
+
+159
+00:11:42,800 --> 00:11:46,580
+So if you've done any Unix stuff you know glob is just like a big.
+
+160
+00:11:46,580 --> 00:11:49,850
+Basically what it sounds glob of stuff.
+
+161
+00:11:49,850 --> 00:11:50,250
+Right.
+
+162
+00:11:50,270 --> 00:11:58,640
+And and so glob here is a folder and we're going to do template parse Glaum and we're going to look
+
+163
+00:11:58,640 --> 00:12:05,890
+in this folder and we're going to parse any file that has this extension GMH.
+
+164
+00:12:06,080 --> 00:12:10,480
+Alternatively I can just say give me all of the files in that folder.
+
+165
+00:12:10,700 --> 00:12:11,230
+Right.
+
+166
+00:12:11,360 --> 00:12:18,380
+And so I gave a GM show just to show you that we could call it anything but just to be compliant with
+
+167
+00:12:18,380 --> 00:12:23,670
+the standards you know not the standards but the customary ways of programming.
+
+168
+00:12:23,810 --> 00:12:30,390
+And then to call call this go HVM Mal here is stand customs.
+
+169
+00:12:30,500 --> 00:12:30,930
+All right.
+
+170
+00:12:31,040 --> 00:12:38,500
+Go east you know and then I'll change all these HMO.
+
+171
+00:12:38,960 --> 00:12:40,400
+There you go.
+
+172
+00:12:41,310 --> 00:12:42,800
+So I'm going to parse the glob.
+
+173
+00:12:42,870 --> 00:12:45,330
+Who's going to parse all my templates in this folder.
+
+174
+00:12:45,360 --> 00:12:46,300
+I've got one.
+
+175
+00:12:46,350 --> 00:12:49,410
+I've got to I've got Vosper.
+
+176
+00:12:49,410 --> 00:12:52,610
+Just so you could see that they could be called anything.
+
+177
+00:12:52,780 --> 00:12:57,520
+And and then I'm going to ask you see which one comes out just how curiosity.
+
+178
+00:12:57,520 --> 00:13:03,770
+And then I'm going to use execute template to execute specifically a certain template.
+
+179
+00:13:03,990 --> 00:13:09,920
+And so that's 0 for.
+
+180
+00:13:11,560 --> 00:13:13,870
+And I have one Vesper's to one.
+
+181
+00:13:13,870 --> 00:13:17,180
+So one was the first one that got executed.
+
+182
+00:13:17,440 --> 00:13:19,670
+Maybe it does it alphabetically I don't know.
+
+183
+00:13:19,840 --> 00:13:21,550
+And then we are best to on.
+
+184
+00:13:21,680 --> 00:13:25,350
+And those are specifically you know which ones.
+
+185
+00:13:25,660 --> 00:13:31,780
+So one last thing we could do with our templates to make sure that our programs perform it is we want
+
+186
+00:13:31,780 --> 00:13:38,570
+to make sure that we parse all of our templates only once again I'm just going to change these two GMH
+
+187
+00:13:38,780 --> 00:13:43,330
+are to go HMO.
+
+188
+00:13:43,330 --> 00:13:44,170
+There we go.
+
+189
+00:13:44,390 --> 00:13:48,910
+I'm just going to say do everything in that folder and then I need to update each of these
+
+190
+00:14:04,370 --> 00:14:05,920
+go.
+
+191
+00:14:06,210 --> 00:14:11,510
+And so now to make this performant only want to parse my templates once so I'm going to use funkin net
+
+192
+00:14:11,990 --> 00:14:13,800
+which initializes my program.
+
+193
+00:14:13,800 --> 00:14:17,060
+It runs once when the program is starting up.
+
+194
+00:14:17,120 --> 00:14:20,290
+And so when my program starts up I'm going to parse this whole glob.
+
+195
+00:14:20,510 --> 00:14:20,890
+Right.
+
+196
+00:14:20,900 --> 00:14:27,420
+And I'm going to store that in my TPL variable which is of type pointer to template from package template.
+
+197
+00:14:27,470 --> 00:14:30,360
+What's this template must function doing right there.
+
+198
+00:14:30,380 --> 00:14:37,190
+So if we can go back and look at the standard library the documentation for package text template we
+
+199
+00:14:37,190 --> 00:14:42,370
+see that when we parse glob we get back a pointer to a template and then there right.
+
+200
+00:14:42,530 --> 00:14:48,620
+And here must takes a pointer to a template and an air and returns just a template.
+
+201
+00:14:48,920 --> 00:14:51,370
+Right so must is going to do my error checking for me.
+
+202
+00:14:51,380 --> 00:14:56,100
+If I go and I look at Must I see that must right.
+
+203
+00:14:56,180 --> 00:14:59,480
+Does my error checking and then returns the template.
+
+204
+00:14:59,750 --> 00:15:05,630
+So I could use mice to avoid doing my or my error checking so I could use parse glob it gives me a pointer
+
+205
+00:15:05,630 --> 00:15:07,000
+to a template in there.
+
+206
+00:15:07,220 --> 00:15:11,030
+You know parse glob gives me a pointer to Templin in there right.
+
+207
+00:15:11,030 --> 00:15:14,390
+That gives me a pointer to template in there right there.
+
+208
+00:15:14,560 --> 00:15:18,730
+And and and must takes a pointer to a template and then there.
+
+209
+00:15:18,800 --> 00:15:26,480
+So what parse glob returns is exactly what must takes so parse glob runs returns a pointer to implement
+
+210
+00:15:26,480 --> 00:15:32,810
+and there must now has a pointer to a template in there and it returns a template which I sign right
+
+211
+00:15:32,840 --> 00:15:33,310
+there.
+
+212
+00:15:33,620 --> 00:15:35,560
+And I put this up here at this level.
+
+213
+00:15:35,660 --> 00:15:41,570
+So it's at package level the scope that way TPL is accessible through out this package.
+
+214
+00:15:41,570 --> 00:15:45,730
+And then I execute my templates so exactly the same thing same output.
+
+215
+00:15:45,740 --> 00:15:47,130
+But let's just see a run
+
+216
+00:15:50,760 --> 00:15:52,020
+and same stuff.
+
+217
+00:15:52,050 --> 00:16:00,600
+So that's how we work with templates and go right that's text template and the two main steps you want
+
+218
+00:16:00,600 --> 00:16:03,490
+to do is you want to parse glob.
+
+219
+00:16:03,570 --> 00:16:10,020
+So get all of your templates and store them into a variable of type pointer to a template and you can
+
+220
+00:16:10,020 --> 00:16:11,930
+think of that variable right.
+
+221
+00:16:11,990 --> 00:16:14,010
+That's this TPL right here.
+
+222
+00:16:14,010 --> 00:16:16,540
+And you can call that whatever you want that's just an identifier.
+
+223
+00:16:16,770 --> 00:16:23,270
+You can think of that variable as a container holding all of the templates which you've parsed and and
+
+224
+00:16:23,280 --> 00:16:29,760
+then you can execute those templates so execute to this writer this template and I'm not passing in
+
+225
+00:16:29,760 --> 00:16:30,770
+data.
+
+226
+00:16:30,800 --> 00:16:31,210
+All right.
+
+227
+00:16:31,260 --> 00:16:35,310
+So I hope that's clear and what we're going to use in this course is we're going to use this structure
+
+228
+00:16:35,310 --> 00:16:42,040
+right here right where we're parsing glob and then we're going to use execute template.
+
+229
+00:16:42,120 --> 00:16:48,720
+But I just want to make sure you saw the standard library and how those different pieces work together.
+
+230
+00:16:48,870 --> 00:16:49,770
+Cool.
+
+231
+00:16:49,770 --> 00:16:50,490
+We're on our way.
+

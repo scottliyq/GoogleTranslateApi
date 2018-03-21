@@ -1,0 +1,228 @@
+1
+00:00:00,180 --> 00:00:02,620
+So now we're going to pass data into our template.
+
+2
+00:00:02,760 --> 00:00:09,120
+But before we do that I just want to take a second to review what we saw in the last video and now is
+
+3
+00:00:09,120 --> 00:00:14,390
+all about parsing our files and then executing him so parse and execute just ingrain that in your head.
+
+4
+00:00:14,400 --> 00:00:15,520
+That's what you want to do.
+
+5
+00:00:15,600 --> 00:00:21,120
+Want to parse all my templates and then execute a template and we're going to use parts glob and execute
+
+6
+00:00:21,120 --> 00:00:22,370
+template to do that.
+
+7
+00:00:22,560 --> 00:00:27,630
+But I've just pulled out some of the functions which I think are the highlights from the text template
+
+8
+00:00:27,630 --> 00:00:28,670
+package.
+
+9
+00:00:28,770 --> 00:00:31,880
+And so here's a type template and again you read that.
+
+10
+00:00:31,890 --> 00:00:36,690
+So some people look at that students look at that and get the doublespeak like what template template
+
+11
+00:00:36,740 --> 00:00:38,400
+programming is crazy.
+
+12
+00:00:38,940 --> 00:00:43,810
+But this is package and this is like some type or some function or variable.
+
+13
+00:00:44,040 --> 00:00:47,250
+And so here we have package template type template.
+
+14
+00:00:47,430 --> 00:00:50,850
+And then what we do is we parse and then we execute.
+
+15
+00:00:51,080 --> 00:00:53,510
+And for parsing we'll be using parse glob.
+
+16
+00:00:53,670 --> 00:00:59,260
+And that gives us a pointer to a template but there's also parse files up at the top package level.
+
+17
+00:00:59,340 --> 00:01:07,590
+And once we have a value of type pointer to template we can add more files into our container that value
+
+18
+00:01:07,590 --> 00:01:13,050
+of type pointer to a template and we can do that with parse parse files or parts glob.
+
+19
+00:01:13,050 --> 00:01:13,310
+Right.
+
+20
+00:01:13,320 --> 00:01:19,170
+So we also have those methods attached to a value of type pointer to a template and then we we execute
+
+21
+00:01:19,170 --> 00:01:23,850
+our templates and we could use execute or execute template and this course will be using execute template
+
+22
+00:01:24,330 --> 00:01:26,400
+with parse glob.
+
+23
+00:01:26,460 --> 00:01:27,080
+Right.
+
+24
+00:01:27,180 --> 00:01:33,330
+And we'll be doing that by using the helper function template must which just gives us back the pointer
+
+25
+00:01:33,330 --> 00:01:36,490
+template and then also the net function.
+
+26
+00:01:36,780 --> 00:01:38,590
+All right cool sets a little bit very view.
+
+27
+00:01:38,670 --> 00:01:45,840
+But now we're going to learn how to pass data into our templates and how we get that data to display
+
+28
+00:01:45,840 --> 00:01:47,150
+once we pass it in.
+
+29
+00:01:47,340 --> 00:01:54,720
+So the syntax for displaying data is just that his curly braces to curly braces to curly braces and
+
+30
+00:01:54,720 --> 00:01:56,680
+then the data is a dot.
+
+31
+00:01:57,140 --> 00:02:01,770
+And so the dot might seem kind of strange when you know depending upon where you're coming from but
+
+32
+00:02:01,770 --> 00:02:07,260
+the door is the current value of the data at that point in execution.
+
+33
+00:02:07,560 --> 00:02:14,190
+And so if I've just passed in a piece of data it's that data that I've just passed in and if that data
+
+34
+00:02:14,190 --> 00:02:20,310
+happened to be a slice and I was arranging over the slice then as I range over the slice the output
+
+35
+00:02:20,310 --> 00:02:25,160
+of that range would become the new input of the next field and we'll see that in action.
+
+36
+00:02:25,350 --> 00:02:31,570
+But for now the dot is the current piece of data and the current piece of data is whatever I passed.
+
+37
+00:02:31,590 --> 00:02:37,730
+So what am I passing in in this program instead of having nil which I had before.
+
+38
+00:02:37,740 --> 00:02:38,350
+Right.
+
+39
+00:02:38,430 --> 00:02:47,490
+I'm now going to pass in 42 which is the answer to the meaning of life the meaning of life is 42.
+
+40
+00:02:47,780 --> 00:02:51,950
+And so yes so 42 got passed into my template.
+
+41
+00:02:51,960 --> 00:02:52,760
+Let's watch her on
+
+42
+00:03:05,940 --> 00:03:07,650
+the meaning of life is 42.
+
+43
+00:03:07,650 --> 00:03:08,750
+Cool.
+
+44
+00:03:08,750 --> 00:03:09,720
+And so that's it.
+
+45
+00:03:09,720 --> 00:03:15,150
+You want to pass that and you pass it in right there and you only get a pass in one piece of data so
+
+46
+00:03:15,150 --> 00:03:16,580
+that trips people out a little bit.
+
+47
+00:03:16,590 --> 00:03:17,170
+Like what.
+
+48
+00:03:17,190 --> 00:03:18,250
+Wait How's that work.
+
+49
+00:03:18,270 --> 00:03:22,520
+If you're coming from other server side programming but you pass in one piece of data.
+
+50
+00:03:22,680 --> 00:03:28,210
+But fortunately we can pass in a piece of data which is aggregate data type.
+
+51
+00:03:28,230 --> 00:03:28,500
+Right.
+
+52
+00:03:28,500 --> 00:03:30,690
+So it's agrah aggregate data structure.
+
+53
+00:03:30,870 --> 00:03:38,250
+So we can pass in a struct which has a whole bunch of fields and those fields could be you know of values
+
+54
+00:03:38,280 --> 00:03:43,070
+of type map or type slice or of type another struct.
+
+55
+00:03:43,170 --> 00:03:48,750
+And so really we can pass in as much as we want but you only get a pass in one piece of data or data
+
+56
+00:03:48,750 --> 00:03:53,150
+structure and then you get access that when you get into your template.
+
+57
+00:03:53,220 --> 00:03:55,560
+So that's how you pass data into a template.
+
