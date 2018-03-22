@@ -1,6 +1,7 @@
 # GoogleTranslateApi
 
-## 1.编译 > go build -o GoogleTranslate main.go
+## 1.编译 
+### > go build -o GoogleTranslate main.go
 
 ## 2.使用
 ### Usage of ./GoogleTranslate:
