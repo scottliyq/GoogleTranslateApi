@@ -1,5 +1,8 @@
 # GoogleTranslateApi
 
+## 1.编译 > go build -o GoogleTranslate main.go
+
+## 2.使用
 ### Usage of ./GoogleTranslate:
 #####   -c string
 ###### 	    翻译一段中文,需输入字符串(字符串中空格前加\或用双引号引出)
