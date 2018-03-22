@@ -1,4 +1,4 @@
-package GoogleTranslate
+package main
 
 import (
 	"net/http"
